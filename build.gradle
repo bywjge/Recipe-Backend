@@ -1,0 +1,45 @@
+//buildscript {
+//    apply plugin: 'hyperskill'
+//
+//    repositories {
+//        mavenCentral()
+//    }
+//    dependencies {
+//        classpath "org.springframework.boot:spring-boot-gradle-plugin:$hs.spring.bootVersion"
+//        classpath "io.spring.gradle:dependency-management-plugin:$hs.spring.dependencyManagementVersion"
+//    }
+//}
+
+plugins {
+    id 'org.springframework.boot' version '2.6.2'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+version = '0.0.1'
+//sourceCompatibility = '1.8'
+
+
+repositories {
+    mavenCentral()
+}
+
+sourceSets.main.resources.srcDirs = ["src/resources"]
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'org.jetbrains:annotations:20.1.0'
+
+    runtimeOnly 'com.h2database:h2'
+
+    compileOnly 'org.projectlombok:lombok:1.18.22'
+    annotationProcessor 'org.projectlombok:lombok:1.18.22'
+    testCompileOnly 'org.projectlombok:lombok:1.18.22'
+    implementation 'org.hibernate.validator:hibernate-validator'
+    testImplementation 'org.hibernate.validator:hibernate-validator'
+}
