@@ -19,8 +19,14 @@ public class Recipe {
     @JsonIgnore //返回前端时的Json里去掉不想要的属性
     @Id
     @Column
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    // 用GenerationType.AUTO的话Id会和User重复，原因未知
+    // https://stackoverflow.com/questions/14022374/the-differences-between-generatedvalue-strategies
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @JsonIgnore
+    @Column
+    private Long userId;
 
     @Column
 //    @NonNull
