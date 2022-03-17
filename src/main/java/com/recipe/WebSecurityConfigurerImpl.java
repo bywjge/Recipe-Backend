@@ -47,6 +47,7 @@ public class WebSecurityConfigurerImpl extends WebSecurityConfigurerAdapter {
 //                .anyRequest().permitAll()
                 .and().httpBasic()
                 .and()
-                .csrf().disable();
+                //add headers().frameOptions().disable() to ensure 127.0.0.1:8881/h2 is visible.
+                .csrf().disable().headers().frameOptions().disable();
     }
 }
